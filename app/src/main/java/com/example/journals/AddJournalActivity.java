@@ -48,14 +48,13 @@ public class AddJournalActivity extends AppCompatActivity {
 
     String imageUrl;
 
-    private String cloudName = BuildConfig.API_KEY;
-    private String uploadPreset = BuildConfig.UPLOAD_PRESET;
-
+    String uploadPreset = BuildConfig.UPLOAD_PRESET;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_journal);
         postImage = findViewById(R.id.postImage);
         addImage = findViewById(R.id.addImage);
@@ -66,12 +65,6 @@ public class AddJournalActivity extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
 
         db = FirebaseFirestore.getInstance();
-
-
-        Map config = new HashMap();
-        config.put("cloud_name",cloudName);
-        MediaManager.init(this,config);
-
 
 
         mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(),
@@ -130,6 +123,12 @@ public class AddJournalActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
 
     public void addNewPost(){
 

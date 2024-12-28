@@ -93,7 +93,8 @@ public class JournalActivity extends AppCompatActivity {
     }
 
     public void startAddJournalActivity(){
-        Intent i = new Intent(this,AddJournalActivity.class);
+        Intent i = new Intent(JournalActivity.this,AddJournalActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(i);
     }
 

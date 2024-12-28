@@ -18,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     AutoCompleteTextView email;
@@ -40,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         passwd = findViewById(R.id.passwd);
         btn1 = findViewById(R.id.signin);
         btn2 = findViewById(R.id.createaccount);
+        String cloudName = BuildConfig.API_KEY;
+
+        Map config = new HashMap();
+        config.put("cloud_name",cloudName);
+        MediaManagerProvider.initialize(this,config);
+
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
